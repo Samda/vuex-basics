@@ -10,24 +10,18 @@
 </template>
 
 <script>
-    export default {
-        computed: {
-          users(){
-            return this.$store.state.users;
-          }
-        },
-        methods: {
-            registerUser(user) {
-              const date = new Date;
-              user.registered = true;
-              this.$store.registrations.push({
-                userId: user.id,
-                name: user.name,
-                date: date.getMonth() + '/' + date.getDay()
-              })
-            }
-        }
+  export default {
+    computed: {
+      users(){
+        return this.$store.state.users.filter( user => { return !user.registered });
+      }
+    },
+    methods: {
+      registerUser(user) {
+        this.$store.dispatch('register', user.id);
+      }
     }
+  }
 </script>
 
 <style scoped>

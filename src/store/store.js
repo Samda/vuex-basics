@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import actions from './actions';
+import mutations from './mutations';
+import getters from './getters';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.new({
+export const store = new Vuex.Store({
   state: {
     registrations: [],
     users: [
@@ -13,5 +16,8 @@ export const store = new Vuex.new({
         {id: 4, name: 'Sven', registered: false}
     ]
   },
+  getters,
+  mutations,
+  actions
 
 });
